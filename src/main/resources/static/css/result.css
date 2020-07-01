@@ -1,0 +1,16 @@
+@charset "UTF-8";
+strong{
+display: inline-block;
+	width: 150px;
+	text-align: left;
+	margin-left:100px;
+}
+span {
+	display: inline-block;
+	width: 300px;
+	text-align: left;
+}
+h2{
+	text-align: center;
+
+}
