@@ -18,14 +18,14 @@ public class EmployeeController {
 	}
 
 	@GetMapping("/registration_form")
-	public String showCreateForm(Model model) {
+	public String showRegistrationForm(Model model) {
 		Employee employee = new Employee();
 		model.addAttribute("employee", employee);
 		return "registration_form";
 	}
 
 	@PostMapping("/save")
-	public String saveEmployee(@ModelAttribute Employee employee, Model model, BindingResult result) {		
+	public String saveEmployee(@ModelAttribute Employee employee, Model model) {		
 		model.addAttribute("employee", employee);
 		return "display_form";
 	}
