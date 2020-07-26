@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <title>Create New Employee</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    
 </head>
 <body>
 <div class="container my-3">
@@ -11,9 +13,6 @@
         <div class="col-md-8 mx-auto">
             <h2>Employee Registration</h2>
             <form th:action="@{/save}" th:object="${employee}" method="post">
-                <ul th:if="${#fields.hasErrors('*')}">
-                    <li th:each="error : ${#fields.errors('*')}" th:text="${error}">error</li>
-                </ul>
                 <div class="form-row">
                     <div class="col-md-6 form-group">
                         <label>ID</label>
@@ -38,7 +37,7 @@
                     </div>
                    
                     <div class="col-md-6 form-group">
-                        <strong>Gender:</strong>
+                        <strong>Gender</strong>
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" th:field="*{gender}" id="option1" value="Male">
                             <label class="form-check-label" for="option1">Male</label>
@@ -52,11 +51,11 @@
                     </div>
                      <div class="col-md-6 form-group">
                         <label>Joining Date</label>
-                        <input type="date" class="form-control" th:field="*{joiningDate}">
+                        <input type="text" class="form-control" placeholder="yyyy-MM-dd" id="join_datepicker" th:field="*{joiningDate}">
                     </div>
                      <div class="col-md-6 form-group">
                         <label>Retiring Date</label>
-                        <input type="date" class="form-control" th:field="*{retiringDate}">
+                        <input type="text" class="form-control" placeholder="yyyy-MM-dd" id="retire_datepicker" th:field="*{retiringDate}">
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary btn-block mt-3">Save</button>
@@ -64,6 +63,13 @@
         </div>
     </div>
 </div>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+ <script>
+	$(function() {
+		$("#join_datepicker").datepicker({dateFormat:"yy-mm-dd"});
+		$("#retire_datepicker").datepicker({dateFormat:"yy-mm-dd"});
+	});
+</script>
 </body>
 </html>
