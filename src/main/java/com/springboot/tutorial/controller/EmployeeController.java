@@ -12,6 +12,13 @@ import com.springboot.tutorial.model.Employee;
 
 @Controller
 public class EmployeeController {
+	
+	@ModelAttribute
+	public void addEmployeeAttribute(Model model){
+		Employee employee = new Employee();
+		model.addAttribute("employee", employee);
+	}
+	
 	@GetMapping("/")
 	public String showHome(Model model) {
 		return "index";
@@ -19,8 +26,6 @@ public class EmployeeController {
 
 	@GetMapping("/registration_form")
 	public String showRegistrationForm(Model model) {
-		Employee employee = new Employee();
-		model.addAttribute("employee", employee);
 		return "registration_form";
 	}
 
